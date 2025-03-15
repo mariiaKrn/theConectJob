@@ -5,14 +5,14 @@ export class Header extends Methods {
     private logoLink: Locator;
     private logoLinkTransparent: Locator;
     private logoLinkPrimary: Locator;
-    private searchLink: Locator;
-    private accountLink: Locator;
-    private cartLink: Locator;
+    public searchLink: Locator;
+    public accountLink: Locator;
+    public cartLink: Locator;
 
     constructor (page: Page){
         super(page);
         this.logoLink = page.locator('.Header__LogoLink');
-        this.logoLinkTransparent = page.locator('Header__LogoImage--transparent');
+        this.logoLinkTransparent = page.locator('.Header__LogoImage--transparent');
         this.logoLinkPrimary = page.locator('.Header__LogoImage--primary');
         this.searchLink = page.locator('a[data-action="toggle-search"].Heading.Link');
         this.accountLink = page.locator('a[href="/account"].Heading.Link.Link--primary.Text--subdued.u-h8');

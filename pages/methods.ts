@@ -31,4 +31,8 @@ export class Methods {
     async click (locator: Locator) {
         await locator.click();
     }
+
+    async verifyEnabled (locator: Locator, options: {timeout?: number} = {}) {
+        await expect(locator).toBeEnabled();
+    }
 }
