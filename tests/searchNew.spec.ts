@@ -14,17 +14,17 @@ test.describe("Check search functionality", () => {
         header = new Header(page);
         await homePage.visitSite();
         await header.clickSearchLink();
+        await search.verifySearchInput();
     })
     
     test ("Check search input with valid data", async ({page}) => {
-        await search.verifySearchInput();
-        await search.fillSearchInput('Smart Door Lock Slim');
-        await search.verifyResults();
+            await search.fillSearchInput("Smart Door Lock Slim");
+            await search.verifyResults();
     })
 
     test ("Check search with invalid data", async ({page}) => {
-        await search.fillSearchInput('123456789');
-        await search.verifyNoResults();
+            await search.fillSearchInput('123456789');
+            await search.verifyNoResults();
     })
 
 })

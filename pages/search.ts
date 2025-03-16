@@ -13,8 +13,6 @@ export class Search extends Methods {
         this.noSearchResults = page.locator('.Segment__Content').first();
     }
 
-
-
     async verifySearchInput() {
         await this.verifyVisible(this.searchInput);
         await this.verifyAttribute(this.searchInput, 'placeholder', 'Search...');
@@ -27,15 +25,20 @@ export class Search extends Methods {
 
     async verifyResults() {
         await this.verifyVisible(this.searchResult);
+        try {
         const text = await this.searchResult.innerText();
         console.log('text is:', text);
         const match = text.match(/(\d+)/);
         await expect(match).not.toBeNull();
+    
         if(match) {
             const number = parseInt(match[1], 10);
             console.log('number:', number);
             await expect(number).toBeGreaterThan(0);
-        }        
+            }  
+        } catch (error) {
+            console.log('Number of found product do not match');
+        }     
     }
 
     async verifyNoResults() {

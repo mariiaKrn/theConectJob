@@ -8,6 +8,7 @@ export class Header extends Methods {
     public searchLink: Locator;
     public accountLink: Locator;
     public cartLink: Locator;
+    public contactLink: Locator;
 
     constructor (page: Page){
         super(page);
@@ -17,6 +18,7 @@ export class Header extends Methods {
         this.searchLink = page.locator('a[data-action="toggle-search"].Heading.Link');
         this.accountLink = page.locator('a[href="/account"].Heading.Link.Link--primary.Text--subdued.u-h8');
         this.cartLink = page.locator('.Heading.u-h6[data-drawer-id="sidebar-cart"]');
+        this.contactLink = page.locator('.HorizontalList a[href="/pages/contact-us"]');
     }
 
     async verifyLogoLink() {
@@ -54,5 +56,9 @@ export class Header extends Methods {
         await this.verifyVisible(this.cartLink);
         await this.verifyAttribute(this.cartLink, 'href', '/cart');
         await this.verifyText(this.cartLink, 'Open cart');
+    }
+
+    async clickContactLink() {
+        await this.click(this.contactLink)
     }
 }

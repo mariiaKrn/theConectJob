@@ -13,7 +13,7 @@ export class Contacts extends Methods {
 
     constructor (page: Page) {
         super(page);
-        this.contactUsTitle = page.locator('.HorizontalList a[href="/pages/contact-us"]');
+        this.contactUsTitle = page.locator('.SectionHeader__Heading');
         this.nameField = page.locator('[name="contact[name]"]');
         this.emailField = page.locator('.Form__Item [name="contact[email]"]');
         this.phoneField = page.locator('[name="contact[Your phone]"]');
@@ -110,4 +110,25 @@ export class Contacts extends Methods {
         console.log('Browser error message for name field:', this.errorMessage);
         expect(this.errorMessage).toBe('Please fill out this field.');
     }
+
+    async fillNameField(value: string) {
+        await this.fillField(this.nameField, value);
+    }
+    
+    async fillEmailField(value: string) {
+        await this.fillField(this.emailField, value);
+    }
+
+    async fillPhoneField(value: string) {
+        await this.fillField(this.phoneField, value);
+    }
+
+    async fillMessageField(value: string) {
+        await this.fillField(this.messageField, value);
+    }
+
+    async clickSubmitButton() {
+        await this.click(this.buttonSendMessage);
+    }
+
 }
