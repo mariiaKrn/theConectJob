@@ -8,10 +8,12 @@ export class Search extends Methods {
 
     constructor (page: Page){
         super(page);
-        this.searchInput = page.locator('a[data-action="toggle-search"].Heading.Link');
+        this.searchInput = page.locator('input[name="q"]');
         this.searchResult = page.locator('span.Heading.Text--subdued.u-h7').first();
         this.noSearchResults = page.locator('.Segment__Content').first();
     }
+
+
 
     async verifySearchInput() {
         await this.verifyVisible(this.searchInput);

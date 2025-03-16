@@ -40,6 +40,10 @@ export class Header extends Methods {
         await this.verifyText(this.searchLink, 'Search');
     }
 
+    async clickSearchLink() {
+        await this.click(this.searchLink);
+    }
+
     async verifyAccountLink() {
         await this.verifyVisible(this.accountLink);
         await this.verifyAttribute(this.accountLink, 'href', '/account');
